@@ -29,34 +29,22 @@
         private void InitializeComponent()
         {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnFileFind = new System.Windows.Forms.Button();
             this.SettingButton = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.grdMain = new System.Windows.Forms.DataGridView();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.colCHK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTemp = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnFileFind
-            // 
-            this.btnFileFind.Location = new System.Drawing.Point(758, 211);
-            this.btnFileFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnFileFind.Name = "btnFileFind";
-            this.btnFileFind.Size = new System.Drawing.Size(86, 29);
-            this.btnFileFind.TabIndex = 0;
-            this.btnFileFind.Text = "파일 찾기";
-            this.btnFileFind.UseVisualStyleBackColor = true;
-            this.btnFileFind.Click += new System.EventHandler(this.btnFileFind_Click);
             // 
             // SettingButton
             // 
@@ -102,15 +90,6 @@
             this.grdMain.RowTemplate.Height = 27;
             this.grdMain.Size = new System.Drawing.Size(616, 150);
             this.grdMain.TabIndex = 4;
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.AllowDrop = true;
-            this.metroButton3.Location = new System.Drawing.Point(364, 102);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(140, 30);
-            this.metroButton3.TabIndex = 5;
-            this.metroButton3.Text = "클라이언트 상태 확인";
             // 
             // colCHK
             // 
@@ -159,6 +138,15 @@
             this.colStatus.ReadOnly = true;
             this.colStatus.Width = 125;
             // 
+            // metroButton3
+            // 
+            this.metroButton3.AllowDrop = true;
+            this.metroButton3.Location = new System.Drawing.Point(364, 102);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(140, 30);
+            this.metroButton3.TabIndex = 5;
+            this.metroButton3.Text = "클라이언트 상태 확인";
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -169,7 +157,6 @@
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.SettingButton);
-            this.Controls.Add(this.btnFileFind);
             this.Font = new System.Drawing.Font("굴림", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Server";
@@ -183,7 +170,6 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btnFileFind;
         private MetroFramework.Controls.MetroButton SettingButton;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;

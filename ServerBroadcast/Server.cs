@@ -91,27 +91,6 @@ namespace ServerBroadcast
             tcpClient.Close();
         }
 
-        private void btnFileFind_Click(object sender, EventArgs e)
-        {
-            Thread thread = new Thread(new ThreadStart(ShowFolderBrowserDialog));
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            thread.Join();
-        }
-
-        private void ShowFolderBrowserDialog()
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "MP3 파일 (*.mp3)|*.mp3|모든 파일 (*.*)|*.*";
-                openFileDialog.Title = "파일 열기";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    MP3FilePath = openFileDialog.FileName;
-                }
-            }
-        }
         private void metroButton1_Click(object sender, EventArgs e)
         {
             ServerBroadcast.ServerSetting serverSettingForm = new ServerBroadcast.ServerSetting();
