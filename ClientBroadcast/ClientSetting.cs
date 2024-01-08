@@ -236,6 +236,7 @@ namespace ClientBroadcast
             this.metroButton2.Size = new System.Drawing.Size(75, 23);
             this.metroButton2.TabIndex = 12;
             this.metroButton2.Text = "추가";
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroButton3
             // 
@@ -328,6 +329,11 @@ namespace ClientBroadcast
             {
                 MessageBox.Show("삭제된 항목이 없습니다.");
             }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

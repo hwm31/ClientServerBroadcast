@@ -25,6 +25,10 @@ namespace ServerBroadcast
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroTextBox ExplainBox;
+        private MetroTextBox metroTextBox1;
+        private MetroTextBox metroTextBox2;
+        private MetroTextBox metroTextBox3;
+        private MetroLabel metroLabel5;
         private ServerSetting serverSettingForm;
         public ClientTemp2(ServerSetting serverSetting)
         {
@@ -41,6 +45,10 @@ namespace ServerBroadcast
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.ExplainBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -81,7 +89,7 @@ namespace ServerBroadcast
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(119, 257);
+            this.metroButton1.Location = new System.Drawing.Point(65, 257);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(75, 23);
             this.metroButton1.TabIndex = 4;
@@ -90,7 +98,7 @@ namespace ServerBroadcast
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(265, 257);
+            this.metroButton2.Location = new System.Drawing.Point(203, 257);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(75, 23);
             this.metroButton2.TabIndex = 5;
@@ -105,9 +113,46 @@ namespace ServerBroadcast
             this.ExplainBox.TabIndex = 6;
             this.ExplainBox.Text = "metroTextBox1";
             // 
+            // metroTextBox1
+            // 
+            this.metroTextBox1.Location = new System.Drawing.Point(104, 73);
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.Size = new System.Drawing.Size(90, 23);
+            this.metroTextBox1.TabIndex = 7;
+            this.metroTextBox1.Text = "metroTextBox1";
+            // 
+            // metroTextBox2
+            // 
+            this.metroTextBox2.Location = new System.Drawing.Point(104, 109);
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.Size = new System.Drawing.Size(46, 23);
+            this.metroTextBox2.TabIndex = 8;
+            this.metroTextBox2.Text = "metroTextBox2";
+            // 
+            // metroTextBox3
+            // 
+            this.metroTextBox3.Location = new System.Drawing.Point(104, 147);
+            this.metroTextBox3.Name = "metroTextBox3";
+            this.metroTextBox3.Size = new System.Drawing.Size(121, 23);
+            this.metroTextBox3.TabIndex = 9;
+            this.metroTextBox3.Text = "metroTextBox3";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(201, 73);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(147, 20);
+            this.metroLabel5.TabIndex = 9;
+            this.metroLabel5.Text = "(10:30 형식으로 입력)";
+            // 
             // ClientTemp2
             // 
-            this.ClientSize = new System.Drawing.Size(441, 323);
+            this.ClientSize = new System.Drawing.Size(357, 311);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.metroTextBox3);
+            this.Controls.Add(this.metroTextBox2);
+            this.Controls.Add(this.metroTextBox1);
             this.Controls.Add(this.ExplainBox);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
@@ -129,7 +174,18 @@ namespace ServerBroadcast
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            
+            if (serverSettingForm == null)
+            {
+                MessageBox.Show("ServerSetting 폼의 인스턴스가 없습니다.");
+                return;
+            }
+
+            string startValue = metroTextBox1.Text;
+            string repValue = metroTextBox2.Text;
+            string fileValue = metroTextBox3.Text;
+            string rmkValue = ExplainBox.Text;
+            serverSettingForm.AddStartToDataGridView(startValue, repValue, fileValue, rmkValue);
+            MessageBox.Show(startValue + " 일정이 저장되었습니다.");
         }
     }
 }

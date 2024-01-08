@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
 using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace ServerBroadcast
 {
@@ -31,6 +32,29 @@ namespace ServerBroadcast
         {
             InitializeComponent(); // 폼의 디자인을 초기화
             this.serverSetting = serverSetting;
+            LoadComboBoxItems(metroComboBox1, "M001");
+            LoadComboBoxItems(metroComboBox2, "M002");
+        }
+
+        private void LoadComboBoxItems(MetroFramework.Controls.MetroComboBox comboBox, string mainCod)
+        {
+            string connectionString = "Data Source=ClientServerdb.db;Version=3;";
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = $"SELECT CODNME FROM comcod WHERE MAINCOD = '{mainCod}'";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            comboBox.Items.Add(reader["CODNME"].ToString());
+                        }
+                    }
+                }
+            }
         }
 
 

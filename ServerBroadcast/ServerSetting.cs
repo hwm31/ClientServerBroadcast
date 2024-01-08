@@ -417,16 +417,32 @@ namespace ServerBroadcast
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            string connectionString = "Data Source=ClientServerdb.db;Version=3;";
             List<string> deletedItems = new List<string>();
 
-            for (int i = dataGridView1.Rows.Count - 1; i >= 0; i--)
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
-                DataGridViewRow row = dataGridView1.Rows[i];
-                if (row.Cells["colSele"].Value != null && (bool)row.Cells["colSele"].Value)
+                conn.Open();
+
+                for (int i = dataGridView1.Rows.Count - 1; i >= 0; i--)
                 {
-                    // 첫 번째 열의 값을 저장합니다. 필요에 따라 다른 열을 선택할 수 있습니다.
-                    deletedItems.Add(row.Cells[1].Value.ToString());
-                    dataGridView1.Rows.RemoveAt(i);
+                    DataGridViewRow row = dataGridView1.Rows[i];
+                    if (row.Cells["colSele"].Value != null && (bool)row.Cells["colSele"].Value)
+                    {
+                        string colLocValue = row.Cells["colLoc"].Value.ToString();
+                        deletedItems.Add(colLocValue);
+
+                        // 데이터베이스에서 해당 항목을 삭제합니다.
+                        string deleteQuery = "DELETE FROM comcod WHERE CODNME = @codnme";
+                        using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@codnme", colLocValue);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // DataGridView에서 행을 삭제합니다.
+                        dataGridView1.Rows.RemoveAt(i);
+                    }
                 }
             }
 
@@ -455,14 +471,54 @@ namespace ServerBroadcast
 
         public void AddLocToDataGridView(string locValue)
         {
-            int rowIndex1 = dataGridView1.Rows.Add(); // 새 행을 추가하고 인덱스를 얻습니다.
-            dataGridView1.Rows[rowIndex1].Cells["colLoc"].Value = locValue; // 'colLoc' 열에 값 설정
+            // DataGridView에 새 행 추가
+            int rowIndex1 = dataGridView1.Rows.Add();
+            dataGridView1.Rows[rowIndex1].Cells["colLoc"].Value = locValue;
+
+            // SQLite에 데이터 저장
+            SaveDataToSQLite(locValue);
+        }
+
+        private void SaveDataToSQLite(string locValue)
+        {
+            string connectionString = "Data Source=ClientServerdb.db;Version=3;";
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                // SUBCOD의 최대값을 찾기 위한 쿼리
+                string queryMaxSubCod = "SELECT MAX(SUBCOD) FROM comcod WHERE MAINCOD = 'M001'";
+                SQLiteCommand cmdMaxSubCod = new SQLiteCommand(queryMaxSubCod, conn);
+                object result = cmdMaxSubCod.ExecuteScalar();
+                int maxSubCod = result != DBNull.Value ? Convert.ToInt32(result.ToString().Substring(1)) : 99; // 'M100'에서 '100'을 추출
+
+                maxSubCod++; // SUBCOD 증가
+                string newSubCod = "M" + maxSubCod.ToString("D3"); // 새로운 SUBCOD 생성
+
+                // 삽입 쿼리
+                string insertQuery = "INSERT INTO comcod (MAINCOD, SUBCOD, CODNME) VALUES ('M001', @newSubCod, @codnme)";
+                using (SQLiteCommand insertCmd = new SQLiteCommand(insertQuery, conn))
+                {
+                    insertCmd.Parameters.AddWithValue("@newSubCod", newSubCod);
+                    insertCmd.Parameters.AddWithValue("@codnme", locValue);
+                    insertCmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void AddTempToDataGridView(string tempValue)
         {
             int rowIndex2 = dataGridView2.Rows.Add();
             dataGridView2.Rows[rowIndex2].Cells["colTEMP"].Value = tempValue; 
+        }
+
+        public void AddStartToDataGridView(string startValue, string repValue, string fileValue, string rmkValue)
+        {
+            int rowIndex3 = dataGridView3.Rows.Add(); 
+            dataGridView3.Rows[rowIndex3].Cells["colStart"].Value = startValue;
+            dataGridView3.Rows[rowIndex3].Cells["colRepet"].Value = repValue;
+            dataGridView3.Rows[rowIndex3].Cells["colFile"].Value = fileValue;
+            dataGridView3.Rows[rowIndex3].Cells["colExpl"].Value = rmkValue;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -506,7 +562,7 @@ namespace ServerBroadcast
         private void SaveButton1_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("선택된 데이터가 저장되었습니다.");
+            MessageBox.Show("선데이터가 저장되었습니다.");
         }
     
 

@@ -64,7 +64,7 @@ namespace ServerBroadcast
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(127, 144);
+            this.metroButton2.Location = new System.Drawing.Point(127, 137);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(75, 23);
             this.metroButton2.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace ServerBroadcast
             // 
             // ClientTemp
             // 
-            this.ClientSize = new System.Drawing.Size(349, 201);
+            this.ClientSize = new System.Drawing.Size(324, 183);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroTextBox1);
