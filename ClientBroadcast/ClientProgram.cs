@@ -26,12 +26,12 @@ namespace ClientBroadcast
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton metroButton6;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private DataGridViewCheckBoxColumn ColSele;
         private DataGridViewTextBoxColumn ColStart;
         private DataGridViewTextBoxColumn ColRep;
         private DataGridViewTextBoxColumn ColFile;
         private DataGridViewTextBoxColumn ColExp;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private string ip;
 
         public ClientProgram(string ip)
@@ -57,23 +57,23 @@ namespace ClientBroadcast
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColSele = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColRep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColExp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
+            this.ColSele = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColExp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(41, 74);
+            this.metroLabel1.Location = new System.Drawing.Point(41, 85);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(39, 20);
             this.metroLabel1.TabIndex = 0;
@@ -81,7 +81,7 @@ namespace ClientBroadcast
             // 
             // metroTextBox1
             // 
-            this.metroTextBox1.Location = new System.Drawing.Point(88, 72);
+            this.metroTextBox1.Location = new System.Drawing.Point(88, 83);
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.Size = new System.Drawing.Size(139, 23);
             this.metroTextBox1.TabIndex = 1;
@@ -95,7 +95,7 @@ namespace ClientBroadcast
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(524, 25);
+            this.metroButton1.Location = new System.Drawing.Point(524, 73);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(67, 32);
             this.metroButton1.TabIndex = 2;
@@ -105,7 +105,7 @@ namespace ClientBroadcast
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(41, 117);
+            this.metroLabel2.Location = new System.Drawing.Point(41, 141);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(284, 20);
             this.metroLabel2.TabIndex = 3;
@@ -114,7 +114,7 @@ namespace ClientBroadcast
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(24, 74);
+            this.metroLabel3.Location = new System.Drawing.Point(24, 85);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(16, 20);
             this.metroLabel3.TabIndex = 4;
@@ -124,7 +124,7 @@ namespace ClientBroadcast
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(24, 117);
+            this.metroLabel4.Location = new System.Drawing.Point(24, 141);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(16, 20);
             this.metroLabel4.TabIndex = 5;
@@ -139,12 +139,55 @@ namespace ClientBroadcast
             this.ColRep,
             this.ColFile,
             this.ColExp});
-            this.dataGridView1.Location = new System.Drawing.Point(41, 164);
+            this.dataGridView1.Location = new System.Drawing.Point(41, 177);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(550, 150);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(41, 345);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(95, 31);
+            this.metroButton2.TabIndex = 7;
+            this.metroButton2.Text = "서버 동기화";
+            // 
+            // metroButton3
+            // 
+            this.metroButton3.Location = new System.Drawing.Point(365, 345);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(61, 31);
+            this.metroButton3.TabIndex = 8;
+            this.metroButton3.Text = "추가";
+            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Location = new System.Drawing.Point(530, 345);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(61, 31);
+            this.metroButton4.TabIndex = 9;
+            this.metroButton4.Text = "저장";
+            // 
+            // metroButton5
+            // 
+            this.metroButton5.Location = new System.Drawing.Point(448, 345);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(61, 31);
+            this.metroButton5.TabIndex = 10;
+            this.metroButton5.Text = "삭제";
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
+            // 
+            // metroButton6
+            // 
+            this.metroButton6.Location = new System.Drawing.Point(293, 83);
+            this.metroButton6.Name = "metroButton6";
+            this.metroButton6.Size = new System.Drawing.Size(75, 23);
+            this.metroButton6.TabIndex = 11;
+            this.metroButton6.Text = "접속 갱신";
+            this.metroButton6.Click += new System.EventHandler(this.metroButton6_Click);
             // 
             // ColSele
             // 
@@ -158,7 +201,6 @@ namespace ClientBroadcast
             this.ColStart.HeaderText = "시작 시간";
             this.ColStart.MinimumWidth = 6;
             this.ColStart.Name = "ColStart";
-            this.ColStart.Width = 125;
             // 
             // ColRep
             // 
@@ -180,49 +222,6 @@ namespace ClientBroadcast
             this.ColExp.MinimumWidth = 6;
             this.ColExp.Name = "ColExp";
             this.ColExp.Width = 135;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(41, 332);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(95, 31);
-            this.metroButton2.TabIndex = 7;
-            this.metroButton2.Text = "서버 동기화";
-            // 
-            // metroButton3
-            // 
-            this.metroButton3.Location = new System.Drawing.Point(365, 332);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(61, 31);
-            this.metroButton3.TabIndex = 8;
-            this.metroButton3.Text = "추가";
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
-            // 
-            // metroButton4
-            // 
-            this.metroButton4.Location = new System.Drawing.Point(530, 332);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(61, 31);
-            this.metroButton4.TabIndex = 9;
-            this.metroButton4.Text = "저장";
-            // 
-            // metroButton5
-            // 
-            this.metroButton5.Location = new System.Drawing.Point(448, 332);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(61, 31);
-            this.metroButton5.TabIndex = 10;
-            this.metroButton5.Text = "삭제";
-            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
-            // 
-            // metroButton6
-            // 
-            this.metroButton6.Location = new System.Drawing.Point(293, 72);
-            this.metroButton6.Name = "metroButton6";
-            this.metroButton6.Size = new System.Drawing.Size(75, 23);
-            this.metroButton6.TabIndex = 11;
-            this.metroButton6.Text = "접속 갱신";
-            this.metroButton6.Click += new System.EventHandler(this.metroButton6_Click);
             // 
             // ClientProgram
             // 
