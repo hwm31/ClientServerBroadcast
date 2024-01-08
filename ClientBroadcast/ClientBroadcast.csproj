@@ -199,6 +199,9 @@
     <Compile Include="ClientSetting.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ClientStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Client.resx">
@@ -209,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientSetting.resx">
       <DependentUpon>ClientSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientStart.resx">
+      <DependentUpon>ClientStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

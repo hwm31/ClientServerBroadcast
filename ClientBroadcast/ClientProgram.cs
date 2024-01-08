@@ -57,16 +57,16 @@ namespace ClientBroadcast
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
-            this.metroButton6 = new MetroFramework.Controls.MetroButton();
             this.ColSele = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColExp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
+            this.metroButton6 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +95,7 @@ namespace ClientBroadcast
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(524, 73);
+            this.metroButton1.Location = new System.Drawing.Point(524, 46);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(67, 32);
             this.metroButton1.TabIndex = 2;
@@ -146,6 +146,41 @@ namespace ClientBroadcast
             this.dataGridView1.Size = new System.Drawing.Size(550, 150);
             this.dataGridView1.TabIndex = 6;
             // 
+            // ColSele
+            // 
+            this.ColSele.HeaderText = "선택";
+            this.ColSele.MinimumWidth = 6;
+            this.ColSele.Name = "ColSele";
+            this.ColSele.Width = 50;
+            // 
+            // ColStart
+            // 
+            this.ColStart.HeaderText = "시작 시간";
+            this.ColStart.MinimumWidth = 6;
+            this.ColStart.Name = "ColStart";
+            this.ColStart.Width = 125;
+            // 
+            // ColRep
+            // 
+            this.ColRep.HeaderText = "반복";
+            this.ColRep.MinimumWidth = 6;
+            this.ColRep.Name = "ColRep";
+            this.ColRep.Width = 65;
+            // 
+            // ColFile
+            // 
+            this.ColFile.HeaderText = "실행 파일";
+            this.ColFile.MinimumWidth = 6;
+            this.ColFile.Name = "ColFile";
+            this.ColFile.Width = 125;
+            // 
+            // ColExp
+            // 
+            this.ColExp.HeaderText = "설명";
+            this.ColExp.MinimumWidth = 6;
+            this.ColExp.Name = "ColExp";
+            this.ColExp.Width = 135;
+            // 
             // metroButton2
             // 
             this.metroButton2.Location = new System.Drawing.Point(41, 345);
@@ -189,40 +224,6 @@ namespace ClientBroadcast
             this.metroButton6.Text = "접속 갱신";
             this.metroButton6.Click += new System.EventHandler(this.metroButton6_Click);
             // 
-            // ColSele
-            // 
-            this.ColSele.HeaderText = "선택";
-            this.ColSele.MinimumWidth = 6;
-            this.ColSele.Name = "ColSele";
-            this.ColSele.Width = 50;
-            // 
-            // ColStart
-            // 
-            this.ColStart.HeaderText = "시작 시간";
-            this.ColStart.MinimumWidth = 6;
-            this.ColStart.Name = "ColStart";
-            // 
-            // ColRep
-            // 
-            this.ColRep.HeaderText = "반복";
-            this.ColRep.MinimumWidth = 6;
-            this.ColRep.Name = "ColRep";
-            this.ColRep.Width = 65;
-            // 
-            // ColFile
-            // 
-            this.ColFile.HeaderText = "실행 파일";
-            this.ColFile.MinimumWidth = 6;
-            this.ColFile.Name = "ColFile";
-            this.ColFile.Width = 125;
-            // 
-            // ColExp
-            // 
-            this.ColExp.HeaderText = "설명";
-            this.ColExp.MinimumWidth = 6;
-            this.ColExp.Name = "ColExp";
-            this.ColExp.Width = 135;
-            // 
             // ClientProgram
             // 
             this.ClientSize = new System.Drawing.Size(637, 412);
@@ -259,7 +260,8 @@ namespace ClientBroadcast
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-
+            ClientBroadcast.ClientStart clientStartForm = new ClientBroadcast.ClientStart();
+            clientStartForm.Show();
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
